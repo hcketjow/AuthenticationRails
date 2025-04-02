@@ -1,2 +1,15 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1><%= "Hello #{current_user.email}" %> Pages#home</h1>
+<% if user_signed_in? %>
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to "Log in", new_user_session_path %><br>
+  <%= link_to "Sign up", new_user_registration_path %>
+<% end %>
+<p>You can test the API with follwing credenatials.</p>
+<div class="container">
+  <div class="ul">
+    <li><%= link_to 'Web books', books_path %> </li>
+    <li>API V1 Books</li>
+    <li>API V1 Android Books</li>
+  </div>
+</div>

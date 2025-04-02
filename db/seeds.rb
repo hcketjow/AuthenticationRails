@@ -1,7 +1,6 @@
-User
-  .where(email: 'w.chodasiewicz@example.com')
-  .first_or_create(
-    password: 'password',
-    password_confirmation: 'password',
-    role: User.roles[:admin]
-  )
+User.first_or_create(
+  email: 'w.chodasiewicz@example.com',
+  password: 'password',
+  password_confirmation: 'password',
+  # role: User.roles[:admin]
+)
