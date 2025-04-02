@@ -7,6 +7,7 @@
 <% end %>
 <p>You can test the API with follwing credenatials.</p>
 <div class="container">
+  <%= @application.as_json %>
   <div class="ul">
     <li><%= link_to 'Web books', books_path %> </li>
     <li>API V1 Books</li>

@@ -1,5 +1,11 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  # enum role: { user: 0, admin: 1 }
+  validates :email, format: URI::MailTo::EMAIL_REGEXP
+  # enum role: %i[user admin]
+
+  def self.authenticate(email, password)
+    user = find_for_authentication(email: email)
+    user&.valid_password?(password) ? user : nil
+  end
 end
